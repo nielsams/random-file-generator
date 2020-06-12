@@ -30,14 +30,10 @@ func main() {
 	fmt.Printf("\nGenerating %d files of size %s in directory %s.\n", *filecount, *filesize, *targetdir)
 
 	createDirIfNotExists(*targetdir)
-	GenerateFiles(*filecount, *targetdir, filesizes)
+	generateFiles(*filecount, *targetdir, filesizes)
 }
 
-// GenerateFiles is used to generate files with random content
-// count - the number of files
-// targetdir - the directory the files will be stored in
-// filesizes - a single number or comma separated list of numbers
-func GenerateFiles(count int, targetdir string, filesizes []string) {
+func generateFiles(count int, targetdir string, filesizes []string) {
 	bar := pb.StartNew(count)
 	for i := 0; i < count; i++ {
 		filename := fmt.Sprintf("%s\\%s.bin", targetdir, uuid.New())
